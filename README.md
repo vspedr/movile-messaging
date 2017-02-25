@@ -1,37 +1,35 @@
 # movile-messaging
 
-Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
+### Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
+
 You will need your own `UserName` and `AuthenticationToken` to make API calls.
+
 Note that most optional parameters are missing in this module, I'm working on it. PR's are welcome as well 😉
 
 ## Usage example:
 ```
-var express = require('express');
-var router = express.Router();
-var Movile = require('movile-messaging');
+const Movile = require('movile-messaging');
+const sms = new Movile('YOUR_USER_NAME', 'YOUR_AUTH_TOKEN');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  let sms = new Movile('YOUR_USER_NAME', 'YOUR_AUTH_TOKEN');
-  console.log(sms.getStatus('9cb87d36-79af-11e5-89f3-1b0591cdf807'));
-  res.render('index', { title: 'Movile Messaging Example' });
-});
+sms.getStatus('9cb87d36-79af-11e5-89f3-1b0591cdf807')
+.then(response => console.log(response.data))   // do something with this data
+.catch(err => console.error(err));              // your error handling
+res.render('index', { title: 'Movile Messaging Example' });
 
-module.exports = router;
 ```
 
 ## Methods:
 ### send(destination, messageText)
 Send SMS message to a single endpoint.
-`destination`: Phone number with country code and area code. Example: `'5519998765432'`
-`messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
+* `destination`: Phone number with country code and area code. Example: `'5519998765432'`
+* `messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
 
 Example:
 ```
 sms.send('5519998765432', 'Your text here');
 ```
 
-Expected return:
+Expected response body:
 ```
 {
   "id":"9cb87d36-79af-11e5-89f3-1b0591cdf807"
@@ -41,15 +39,15 @@ Expected return:
 
 ### sendBulk(numbers, messageText)
 Send the same SMS message to many endpoints at once.
-`numbers`: Array of phone numbers, just like `destination` in the `send` method.
-`messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
+* `numbers`: Array of phone numbers, just like `destination` in the `send` method.
+* `messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
 
 Example:
 ```
 sms.sendBulk(['5519988887777', '5535989890000'], 'Your text here');
 ```
 
-Expected return:
+Expected response body:
 ```
 {
   "id":"317b925a-79b0-11e5-82d3-9fb06ba220b3",
@@ -67,13 +65,13 @@ Expected return:
 
 ### getStatus(id)
 Check the delivery status of a single message.
-`id`: ID of a message, obtained when it is sent.
+* `id`: ID of a message, obtained when it is sent.
 
 Example:
 ```
 sms.getStatus('8f5af680-973e-11e4-ad43-4ee58e9a13a6');
 ```
-Expected return:
+Expected response body:
 ```
 {
   "id":"8f5af680-973e-11e4-ad43-4ee58e9a13a6",

@@ -1,6 +1,6 @@
 {
   "name": "movile-messaging",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple node.js wrapper for Movile's Messaging API",
   "repository": "vspedr/movile-messaging",
   "main": "index.js",
