@@ -1,4 +1,7 @@
 # movile-messaging
+[![Known Vulnerabilities](https://snyk.io/test/github/vspedr/movile-messaging/badge.svg)](https://snyk.io/test/github/vspedr/movile-messaging)
+[![npm version](https://badge.fury.io/js/movile-messaging.svg)](https://badge.fury.io/js/movile-messaging)
+
 
 ### Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
 
