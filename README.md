@@ -6,6 +6,8 @@
 
 ### Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
 
+** Read carefully through Movile Messaging's official documentation (link above) before using this module. It will *NOT* attempt to validate or sanitize your parameters before sending requests, so make sure you're sending what they are expecting to receive. **
+
 You will need your own `UserName` and `AuthenticationToken` to make API calls.
 
 Note that most optional parameters are missing in this module, I'm working on it. PR's are welcome as well 😉
@@ -18,7 +20,6 @@ const sms = new Movile('YOUR_USER_NAME', 'YOUR_AUTH_TOKEN');
 sms.getStatus('9cb87d36-79af-11e5-89f3-1b0591cdf807')
 .then(response => console.log(response.data))   // do something with this data
 .catch(err => console.error(err));              // your error handling
-res.render('index', { title: 'Movile Messaging Example' });
 
 ```
 
@@ -30,7 +31,9 @@ Send SMS message to a single endpoint.
 
 Example:
 ```
-sms.send('5519998765432', 'Your text here');
+sms.send('5519998765432', 'Your text here')
+.then(response => console.log(response.data))   // do something with this data
+.catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
@@ -48,7 +51,9 @@ Send the same SMS message to many endpoints at once.
 
 Example:
 ```
-sms.sendBulk(['5519988887777', '5535989890000'], 'Your text here');
+sms.sendBulk(['5519988887777', '5535989890000'], 'Your text here')
+.then(response => console.log(response.data))   // do something with this data
+.catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
@@ -73,8 +78,11 @@ Check the delivery status of a single message.
 
 Example:
 ```
-sms.getStatus('8f5af680-973e-11e4-ad43-4ee58e9a13a6');
+sms.getStatus('8f5af680-973e-11e4-ad43-4ee58e9a13a6')
+.then(response => console.log(response.data))   // do something with this data
+.catch(err => console.error(err));              // your error handling
 ```
+
 Expected response body:
 ```
 {
@@ -94,7 +102,77 @@ Expected response body:
 }
 ```
 
-* Note that phone numbers from `OI` carrier will not return `DELIVERED_SUCCESS` status even if the SMS was successfully received.
-* Delivery status data is only retained in Movile's backend for a few days, so you may want to store this data somewhere else.
+### listReceived()
+Retrieve messages sent to your LA's (i. e. a client replied to your SMS).
+
+Example:
+```
+sms.listReceived()
+.then(response => console.log(response.data))   // do something with this data
+.catch(err => console.error(err));              // your error handling
+```
+
+Expected response body:
+```
+{
+  "total": 1,
+  "start": "2016-09-04T11:12:41Z",
+  "end": "2016-09-08T11:17:39.113Z",
+  "messages": [
+    {
+      "id": "25950050-7362-11e6-be62-001b7843e7d4",
+      "subAccount": "iFoodMarketing",
+      "campaignAlias": "iFoodPromo",
+      "carrierId": 1,
+      "carrierName": "VIVO",
+      "source": "5516981562820",
+      "shortCode": "28128",
+      "messageText": "Eu quero pizza",
+      "receivedAt": 1473088405588,
+      "receivedDate": "2016-09-05T12:13:25Z",
+      "mt": {
+        "id": "8be584fd-2554-439b-9ba9-aab507278992",
+        "correlationId": "1876",
+        "username": "iFoodCS",
+        "email": "customer.support@ifood.com"
+      }
+    },
+    {
+      "id": "d3afc42a-1fd9-49ff-8b8b-34299c070ef3",
+      "subAccount": "iFoodMarketing",
+      "campaignAlias": "iFoodPromo",
+      "carrierId": 5,
+      "carrierName": "TIM",
+      "source": "5519987565020",
+      "shortCode": "28128",
+      "messageText": "Meu hamburguer está chegando?",
+      "receivedAt": 1473088405588,
+      "receivedDate": "2016-09-05T12:13:25Z",
+      "mt": {
+        "id": "302db832-3527-4e3c-b57b-6a481644d88b",
+        "correlationId": "1893",
+        "username": "iFoodCS",
+        "email": "customer.support@ifood.com"
+      }
+    }
+  ]
+}
+```
+
+### searchReceived(start, end)
+Search for messages received in a time interval (between `start` and `end`, as one would expect).
+* `start`: ISO8601-formatted string. Defaults to 5 days ago from current date.
+* `end`: ISO8601-formatted string. Defaults to current date.
+
+Example:
+```
+sms.listReceived('2016-09-04T11:12:41Z', '2016-09-08T11:17:39.113Z')
+```
+
+Expected response body: *same format as listReceived()*
+
+
+* Note that phone numbers from `OI` and `Sercomtel` carriers will not return `DELIVERED_SUCCESS` status even if the SMS was successfully received.
+* Data is only retained in Movile's end for a few days, so you may want to store this data somewhere else.
 
 Special thanks to [@mCodex](https://github.com/mCodex/)

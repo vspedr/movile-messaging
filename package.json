@@ -18,7 +18,8 @@
   "author": "vspedr",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3"
+    "axios": "^0.15.3",
+    "qs": "^6.4.0"
   },
   "devDependencies": {
     "eslint": "^3.16.0",

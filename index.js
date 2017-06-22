@@ -1,5 +1,6 @@
 'use strict';
 
+const qs = require('qs');
 const axios = require('axios');
 
 module.exports = class MovileMessaging {
@@ -15,6 +16,24 @@ module.exports = class MovileMessaging {
     });
   }
 
+  // GETs
+  getStatus(id) {
+    const query = qs.stringify({ id });
+    console.warn(query);
+    return this.instance.get('/sms-status?' + query);
+  }
+
+  listReceived() {
+    return this.instance.get('/sms/receive/list');
+  }
+
+  searchReceived(start, end) {
+    const query = qs.stringify({ start, end });
+    console.warn(query);
+    return this.instance.get('/sms/receive/search?' + query);
+  }
+
+  // POSTs
   send(destination = null, messageText = '') {
     return this.instance.post('/send-sms', {
       destination,
@@ -30,9 +49,5 @@ module.exports = class MovileMessaging {
         messageText
       }
     });
-  }
-
-  getStatus(id = '') {
-    return this.instance.get('/sms-status?id=' + id);
   }
 };
