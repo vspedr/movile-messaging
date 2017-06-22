@@ -19,7 +19,6 @@ module.exports = class MovileMessaging {
   // GETs
   getStatus(id) {
     const query = qs.stringify({ id });
-    console.warn(query);
     return this.instance.get('/sms-status?' + query);
   }
 
@@ -29,7 +28,6 @@ module.exports = class MovileMessaging {
 
   searchReceived(start, end) {
     const query = qs.stringify({ start, end });
-    console.warn(query);
     return this.instance.get('/sms/receive/search?' + query);
   }
 
