@@ -1,4 +1,6 @@
 # movile-messaging 📲
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/vspedr/movile-messaging.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/movile-messaging.svg)](https://badge.fury.io/js/movile-messaging)
 [![Code Climate](https://codeclimate.com/github/vspedr/movile-messaging/badges/gpa.svg)](https://codeclimate.com/github/vspedr/movile-messaging)
 [![Known Vulnerabilities](https://snyk.io/test/github/vspedr/movile-messaging/badge.svg)](https://snyk.io/test/github/vspedr/movile-messaging)
