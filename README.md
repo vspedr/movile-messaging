@@ -2,9 +2,10 @@
 [![npm version](https://badge.fury.io/js/movile-messaging.svg)](https://badge.fury.io/js/movile-messaging)
 [![Code Climate](https://codeclimate.com/github/vspedr/movile-messaging/badges/gpa.svg)](https://codeclimate.com/github/vspedr/movile-messaging)
 [![Known Vulnerabilities](https://snyk.io/test/github/vspedr/movile-messaging/badge.svg)](https://snyk.io/test/github/vspedr/movile-messaging)
+[![Build Status](https://travis-ci.org/vspedr/movile-messaging.svg?branch=master)](https://travis-ci.org/vspedr/movile-messaging)
 
 
-### Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
+### Unofficial Node.js wrapper for [Movile's SMS Messaging API](http://doc-messaging.movile.com/sms-v1.html).
 
 ** Read carefully through Movile Messaging's official documentation (link above) before using this module. It will *NOT* attempt to validate or sanitize your parameters before sending requests, so make sure you're sending what they are expecting to receive. **
 
