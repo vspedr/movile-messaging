@@ -16,7 +16,7 @@ You will need your own `UserName` and `AuthenticationToken` to make API calls.
 Note that most optional parameters are missing in this module, I'm working on it. PR's are welcome as well 😉
 
 ## Usage example:
-```
+```js
 const Movile = require('movile-messaging');
 const sms = new Movile('YOUR_USER_NAME', 'YOUR_AUTH_TOKEN');
 
@@ -33,14 +33,14 @@ Send SMS message to a single endpoint.
 * `messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
 
 Example:
-```
+```js
 sms.send('5519998765432', 'Your text here')
 .then(response => console.log(response.data))   // do something with this data
 .catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
-```
+```json
 {
   "id":"9cb87d36-79af-11e5-89f3-1b0591cdf807"
 }
@@ -53,14 +53,14 @@ Send the same SMS message to many endpoints at once.
 * `messageText`: The message string to be sent. If it's too long, it will be split into multiple messages.
 
 Example:
-```
+```js
 sms.sendBulk(['5519988887777', '5535989890000'], 'Your text here')
 .then(response => console.log(response.data))   // do something with this data
 .catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
-```
+```json
 {
   "id":"317b925a-79b0-11e5-82d3-9fb06ba220b3",
   "messages":[
@@ -80,14 +80,14 @@ Check the delivery status of a single message.
 * `id`: ID of a message, obtained when it is sent.
 
 Example:
-```
+```js
 sms.getStatus('8f5af680-973e-11e4-ad43-4ee58e9a13a6')
 .then(response => console.log(response.data))   // do something with this data
 .catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
-```
+```json
 {
   "id":"8f5af680-973e-11e4-ad43-4ee58e9a13a6",
   "carrierId":5,
@@ -109,14 +109,14 @@ Expected response body:
 Retrieve messages sent to your LA's (i. e. a client replied to your SMS).
 
 Example:
-```
+```js
 sms.listReceived()
 .then(response => console.log(response.data))   // do something with this data
 .catch(err => console.error(err));              // your error handling
 ```
 
 Expected response body:
-```
+```json
 {
   "total": 1,
   "start": "2016-09-04T11:12:41Z",
@@ -168,7 +168,7 @@ Search for messages received in a time interval (between `start` and `end`, as o
 * `end`: ISO8601-formatted string. Defaults to current date.
 
 Example:
-```
+```js
 sms.listReceived('2016-09-04T11:12:41Z', '2016-09-08T11:17:39.113Z')
 ```
 
