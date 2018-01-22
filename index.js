@@ -18,7 +18,9 @@ module.exports = class MovileMessaging {
 
   // GETs
   getStatus(id) {
-    const query = qs.stringify({ id });
+    const query = qs.stringify({
+      id
+    });
     return this.instance.get('/sms-status?' + query);
   }
 
@@ -27,7 +29,10 @@ module.exports = class MovileMessaging {
   }
 
   searchReceived(start, end) {
-    const query = qs.stringify({ start, end });
+    const query = qs.stringify({
+      start,
+      end
+    });
     return this.instance.get('/sms/receive/search?' + query);
   }
 
@@ -40,7 +45,9 @@ module.exports = class MovileMessaging {
   }
 
   sendBulk(numbers = [], messageText = '') {
-    const messages = numbers.map(number => ({ destination: number }));
+    const messages = numbers.map(number => ({
+      destination: number
+    }));
     return this.instance.post('/send-bulk-sms', {
       messages,
       defaultValues: {
