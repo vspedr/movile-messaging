@@ -1,0 +1,15 @@
+{
+  "id": "8f5af680-973e-11e4-ad43-4ee58e9a13a6",
+  "carrierId": 5,
+  "carrierName": "TIM",
+  "destination": "5519900001111",
+  "sentStatusCode": 2,
+  "sentStatus": "SENT_SUCCESS",
+  "sentStatusAt": 1420732929252,
+  "sentStatusDate": "2015-01-08T16:02:09Z",
+  "deliveredStatusCode": 4,
+  "deliveredStatus": "DELIVERED_SUCCESS",
+  "deliveredAt": 1420732954000,
+  "deliveredDate": "2015-01-08T16:02:34Z",
+  "campaignId": 1234
+}

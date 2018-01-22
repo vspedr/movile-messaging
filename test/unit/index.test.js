@@ -1,4 +1,5 @@
 const Movile = require('../../index');
+
 const sms = new Movile('DUMMY', 'DUMMY');
 
 describe('sanity test', () => {

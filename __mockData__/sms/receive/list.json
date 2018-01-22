@@ -1,0 +1,23 @@
+{
+  "total": 1,
+  "start": "2016-09-04T11:12:41Z",
+  "end": "2016-09-08T11:17:39.113Z",
+  "messages": [{
+    "id": "25950050-7362-11e6-be62-001b7843e7d4",
+    "subAccount": "iFoodMarketing",
+    "campaignAlias": "iFoodPromo",
+    "carrierId": 1,
+    "carrierName": "VIVO",
+    "source": "5516981562820",
+    "shortCode": "28128",
+    "messageText": "Eu quero pizza",
+    "receivedAt": 1473088405588,
+    "receivedDate": "2016-09-05T12:13:25Z",
+    "mt": {
+      "id": "8be584fd-2554-439b-9ba9-aab507278992",
+      "correlationId": "1876",
+      "username": "iFoodCS",
+      "email": "customer.support@ifood.com"
+    }
+  }]
+}
