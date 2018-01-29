@@ -5,9 +5,11 @@
   "repository": "vspedr/movile-messaging",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/jest-cli/bin/jest",
+    "lint": "eslint .",
+    "precommit": "yarn lint",
+    "prepublish": "npm run snyk-protect",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "test": "jest --coverage"
   },
   "keywords": [
     "movile",
@@ -25,6 +27,7 @@
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.2.0",
+    "husky": "^0.14.3",
     "jest": "^22.0.0",
     "snyk": "^1.30.1"
   },
