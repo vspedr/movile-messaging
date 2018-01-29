@@ -45,9 +45,14 @@ module.exports = class MovileMessaging {
   }
 
   sendBulk(numbers = [], messageText = '') {
-    const messages = numbers.map(number => ({
-      destination: number
-    }));
+    const messages = numbers.map(number => {
+      if(typeof number === 'string'){
+        return {
+          destination: number
+        };
+      }
+      return number;
+    });
     return this.instance.post('/send-bulk-sms', {
       messages,
       defaultValues: {
