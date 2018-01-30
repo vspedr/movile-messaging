@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - 8.2.1
 
+# fail fast
+before_script:
+  - yarn lint
+
 script:
   - yarn test
 

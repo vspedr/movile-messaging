@@ -45,8 +45,8 @@ module.exports = class MovileMessaging {
   }
 
   sendBulk(numbers = [], messageText = '') {
-    const messages = numbers.map(number => {
-      if(typeof number === 'string'){
+    const messages = numbers.map((number) => {
+      if (typeof number === 'string') {
         return {
           destination: number
         };
