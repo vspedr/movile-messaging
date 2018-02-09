@@ -17,11 +17,13 @@ module.exports = class MovileMessaging {
   }
 
   // GETs
-  getStatus(id) {
-    const query = qs.stringify({
-      id
+  getStatus(ids) {
+    if (typeof ids === 'string') {
+      ids = [ids];
+    }
+    return this.instance.post('/sms/status/search', {
+      ids
     });
-    return this.instance.get('/sms-status?' + query);
   }
 
   listReceived() {
