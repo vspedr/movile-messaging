@@ -18,12 +18,13 @@ module.exports = class MovileMessaging {
 
   // GETs
   getStatus(ids) {
+    const payload = {};
     if (typeof ids === 'string') {
-      ids = [ids];
+      payload.ids = [ids];
+    } else if (ids instanceof Array) {
+      payload.ids = ids;
     }
-    return this.instance.post('/sms/status/search', {
-      ids
-    });
+    return this.instance.post('/sms/status/search', payload);
   }
 
   listReceived() {
