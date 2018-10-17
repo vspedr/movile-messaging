@@ -27,7 +27,7 @@
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.1",
     "jest": "^22.0.0",
     "snyk": "^1.30.1"
   },
