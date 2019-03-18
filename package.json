@@ -24,7 +24,7 @@
     "qs": "^6.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "husky": "^1.0.1",
